@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -27,16 +25,23 @@ return {
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
-        relativenumber = true, -- sets vim.opt.relativenumber
+        relativenumber = false, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = false, -- sets vim.opt.wrap
+        expandtab = true, -- expand tabs to spaces
+        shiftwidth = 4,
+        tabstop = 4,
+        cindent = true,
+        -- completeopt = { "menu", "menuone", "noinsert", "menuone" },
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+        autoformat = false,
+        termdebug_wide = 1,
       },
     },
     -- Mappings can be configured through AstroCore as well.
@@ -58,6 +63,20 @@ return {
             )
           end,
           desc = "Close buffer from tabline",
+        },
+
+        -- [aravk] mappings relative to buffer dir
+        ["<leader>e"] = { ':e <C-R>=expand("%:p:h") . "/" <CR>', desc = "Open :edit in dir of current file" },
+        ["<leader>t"] = { ':tabe <C-R>=expand("%:p:h") . "/" <CR>', desc = "Open :tabnew in dir of current file" },
+
+        -- ["<C-q>"] = { vim.cmd.cclose, desc = "Close quickfix" },
+        ["<C-e>"] = {
+          function()
+            local currwinid = vim.fn.win_getid()
+            vim.cmd [[ topleft copen ]] -- open quickfix top left
+            vim.fn.win_gotoid(currwinid) -- go back to previous window
+          end,
+          desc = "Open quickfix and jump to it",
         },
 
         -- tables with just a `desc` key will be registered with which-key if it's installed
