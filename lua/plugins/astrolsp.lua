@@ -42,7 +42,25 @@ return {
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      clangd = {
+        capabilities = { offsetEncoding = "utf-8" },
+        cmd = {
+          "clangd",
+          "--background-index",
+          "-j=4",
+          "--clang-tidy",
+          "--enable-config",
+          "--header-insertion=never",
+          "--completion-style=detailed",
+          "--function-arg-placeholders",
+          "--include-ineligible-results",
+        },
+        init_options = {
+          usePlaceholders = true,
+          completeUnimported = true,
+          clangdFileStatus = true,
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
