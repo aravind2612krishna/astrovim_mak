@@ -6,5 +6,6 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.editing-support.zen-mode-nvim" },
+  { import = "astrocommunity.completion.copilot-cmp" },
   -- { import = "astrocommunity.completion.coq_nvim" },
 }

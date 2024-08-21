@@ -37,7 +37,7 @@ return {
           cindent = true,
           completeopt = { "menu", "menuone", "noinsert", "popup" },
           -- completeopt = "menu,menuone,noinsert,select,popup",
-          clipboard = "",
+          clipboard = "unnamedplus",
         },
         g = { -- vim.g.<key>
           -- configure global vim variables (vim.g)
@@ -94,6 +94,24 @@ return {
         -- t = {
         --   ["<Esc>"] = { "<C-\\><C-n>" }
         -- },
+      },
+      autocmds = {
+        -- autocmds can be configured here
+        autoosc = {
+          {
+            event = "TextYankPost",
+            desc = "copy to OSC keyboard",
+            callback = function()
+              vim.highlight.on_yank()
+              if os.getenv "SSH_CONNECTION" then
+                local copy_to_unnamedplus = require("vim.ui.clipboard.osc52").copy "+"
+                copy_to_unnamedplus(vim.v.event.regcontents)
+                local copy_to_unnamed = require("vim.ui.clipboard.osc52").copy "*"
+                copy_to_unnamed(vim.v.event.regcontents)
+              end
+            end,
+          },
+        },
       },
     },
   },

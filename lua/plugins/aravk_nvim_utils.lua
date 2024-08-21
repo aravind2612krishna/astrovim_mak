@@ -1,5 +1,6 @@
 return {
-  "aravind2612krishna/aravk_nvim_utils",
+  -- "aravind2612krishna/aravk_nvim_utils",
+  dir = "/home/aravk/sources/aravk_nvim_utils",
   keys = {
     {
       "<leader>td",
@@ -10,14 +11,9 @@ return {
       mode = "n",
       desc = "Setup termdebug and start it",
     },
-    {
-      "<leader>sc",
-      function()
-        local smartcopy = require "aravk_nvim_utils.smartcodecopy"
-        if smartcopy then smartcopy.copy_with_context() end
-      end,
-      mode = { "n", "v" },
-      desc = "Copy code with context information",
-    },
   },
+  cmd = { "CopyContext" },
+  config = function(_, opts)
+      require("aravk_nvim_utils.smartcodecopy").setup(opts)
+  end
 }
