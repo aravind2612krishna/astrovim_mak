@@ -1,6 +1,6 @@
 return {
-  -- "aravind2612krishna/aravk_nvim_utils",
-  dir = "/home/aravk/sources/aravk_nvim_utils",
+  "aravind2612krishna/aravk_nvim_utils",
+  -- dir = "/home/aravk/sources/aravk_nvim_utils",
   keys = {
     {
       "<leader>td",
