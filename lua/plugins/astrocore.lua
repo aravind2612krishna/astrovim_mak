@@ -38,6 +38,7 @@ return {
           completeopt = { "menu", "menuone", "noinsert", "popup" },
           -- completeopt = "menu,menuone,noinsert,select,popup",
           clipboard = "unnamedplus",
+          diffopt = "context:99999",
         },
         g = { -- vim.g.<key>
           -- configure global vim variables (vim.g)
@@ -73,8 +74,9 @@ return {
           ["<leader>t"] = { ':tabe <C-R>=expand("%:p:h") . "/" <CR>', desc = "Open :tabnew in dir of current file" },
           ["<leader>c"] = false,
 
-          ["<C-q>"] = false,
-          -- ["<C-q>"] = { ":cclose", desc = "Close quickfix" },
+          -- ["<C-q>"] = false,
+          ["<C-q>"] = { ":cclose<CR>", desc = "Close quickfix" },
+          ["<C-Q>"] = { ":cclose<CR>", desc = "Close quickfix" },
           ["<C-e>"] = {
             function()
               local currwinid = vim.fn.win_getid()
@@ -112,6 +114,15 @@ return {
             end,
           },
         },
+        aravkvim = {
+            {
+                event = "VimEnter",
+                pattern = "*",
+                callback = function()
+                    vim.opt.diffopt:append("context:99999")
+                end,
+            },
+        },
       },
     },
   },
@@ -130,5 +141,8 @@ return {
   },
   {
     "akinsho/toggleterm.nvim",
+    opts = {
+        direction = 'float',
+    },
   },
 }

@@ -21,43 +21,27 @@ return {
       skip_resolved_discussion = true,
       skip_old_revision_discussion = false,
     },
+    discussion_tree = { -- The discussion tree that holds all comments
+        position = "top", -- "top", "right", "bottom" or "left"
+        tree_type = "by_file_name",
+    },
   },
-  config = function(_, opts)
-    require("gitlab").setup(opts)
-    vim.keymap.set("n", "gls", require("gitlab").summary, { desc = "Gitlab summary" })
-    vim.keymap.set("n", "glA", require("gitlab").approve, { desc = "Gitlab approve" })
-    vim.keymap.set("n", "glR", require("gitlab").revoke, { desc = "Gitlab revoke" })
-    vim.keymap.set("n", "glc", require("gitlab").create_comment, { desc = "Gitlab create_comment" })
-    vim.keymap.set("v", "glc", require("gitlab").create_multiline_comment, { desc = "Gitlab create_multiline_comment" })
-    vim.keymap.set(
-      "v",
-      "glC",
-      require("gitlab").create_comment_suggestion,
-      { desc = "Gitlab create_comment_suggestion" }
-    )
-    vim.keymap.set(
-      "n",
-      "glm",
-      require("gitlab").move_to_discussion_tree_from_diagnostic,
-      { desc = "Gitlab move_to_discussion_tree_from_diagnostic" }
-    )
-    vim.keymap.set("n", "gln", require("gitlab").create_note, { desc = "Gitlab create_note" })
-    vim.keymap.set("n", "gld", require("gitlab").toggle_discussions, { desc = "Gitlab toggle_discussions" })
-    vim.keymap.set("n", "glaa", require("gitlab").add_assignee, { desc = "Gitlab add_assignee" })
-    vim.keymap.set("n", "glad", require("gitlab").delete_assignee, { desc = "Gitlab delete_assignee" })
-    vim.keymap.set("n", "glra", require("gitlab").add_reviewer, { desc = "Gitlab add_reviewer" })
-    vim.keymap.set("n", "glrd", require("gitlab").delete_reviewer, { desc = "Gitlab delete_reviewer" })
-    vim.keymap.set("n", "glp", require("gitlab").pipeline, { desc = "Gitlab pipeline" })
-    vim.keymap.set("n", "glo", require("gitlab").open_in_browser, { desc = "Gitlab open_in_browser" })
-  end,
   keys = {
     {
-      "glr",
+      "glc",
+      function()
+        require("gitlab").choose_merge_request()
+      end,
+      mode = "n",
+      desc = "Choose review",
+    },
+    {
+      "glS",
       function()
         require("gitlab").review()
       end,
       mode = "n",
-      desc = "Open review",
+      desc = "Choose review",
     },
   },
 }
