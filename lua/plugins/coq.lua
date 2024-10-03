@@ -1,6 +1,6 @@
 return {
   "ms-jpq/coq.thirdparty",
-  -- enabled = false,
+  enabled = false,
   lazy = false,
   dependencies = {
       "github/copilot.vim"
