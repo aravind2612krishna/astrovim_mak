@@ -11,5 +11,6 @@ return {
       { src = "copilot", short_name = "COP", tmp_accept_key = "<c-f>" },
       { src = "figlet", short_name = "BIG", trigger="!big" },
     }
+    vim.opt.completeopt:remove('noselect')
   end,
 }

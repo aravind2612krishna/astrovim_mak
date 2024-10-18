@@ -9,6 +9,7 @@ return {
     opts = {
       -- See Configuration section for rest
     },
+    cmd = {"CopilotChat"},
     -- See Commands section for default commands if you want to lazy load on them
   },
 }

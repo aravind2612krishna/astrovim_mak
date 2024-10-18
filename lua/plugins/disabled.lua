@@ -16,6 +16,8 @@ return {
   -- { "Bekaboo/dropbar.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
   { "stevearc/aerial.nvim", enabled = false },
+  { "rcarriga/cmp-dap", enabled = false },
+  { "OXY2DEV/markview.nvim", enabled = false },
   -- { "hrsh7th/nvim-cmp", enabled = false },
   -- { "ms-jpq/coq_nvim", enabled = false },
   -- { "ray-x/lsp_signature.nvim", enabled = false },

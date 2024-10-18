@@ -28,6 +28,7 @@ return {
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
+    event = "VeryLazy",
     -- overrides `require("mason-nvim-dap").setup(...)`
     opts = {
       ensure_installed = {
