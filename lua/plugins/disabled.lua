@@ -24,4 +24,6 @@ return {
   -- { "bufferline.nvim", enabled = false },
   -- { "ranjithshegde/ccls.nvim", enabled = false },
   -- { "AlejandroSuero/freeze-code.nvim", enabled = false },
+  { "folke/which-key.nvim", optional = true, enabled = false },
+  { "windwp/nvim-autopairs", enabled = false},
 }
