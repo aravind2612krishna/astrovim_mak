@@ -7,7 +7,7 @@ return {
       "<leader>rr",
       function()
         local bufnr = vim.api.nvim_get_current_buf()
-        local cmd = "AsyncRun ug -RniI " .. vim.fn.expand("<cword>") .. " " .. vim.fn.expand("%:.:h")
+        local cmd = "AsyncRun rg --vimgrep -i " .. vim.fn.expand("<cword>") .. " " .. vim.fn.expand("%:.:h")
         vim.cmd(cmd)
         vim.fn.histadd("cmd", cmd)
         local currwinid = vim.fn.win_getid()

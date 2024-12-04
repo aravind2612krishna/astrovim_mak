@@ -6,6 +6,7 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.editing-support.zen-mode-nvim" },
+  -- { import = "astrocommunity.editing-support.conform-nvim" },
   -- { import = "astrocommunity.completion.copilot-cmp" },
   -- { import = "astrocommunity.recipes.heirline-nvchad-statusline" },
   -- { import = "astrocommunity.keybinding.mini-clue" },
