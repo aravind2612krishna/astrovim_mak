@@ -120,6 +120,8 @@ return {
                 pattern = "*",
                 callback = function()
                     vim.opt.diffopt:append("context:99999")
+                    vim.opt.diffopt:append("filler")
+                    vim.opt.guicursor:append("a:blinkon50-blinkoff50-blinkwait0")
                 end,
             },
         },

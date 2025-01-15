@@ -15,16 +15,6 @@ MEnabled = {
     -- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
 
     opts = {
-      highlight = {
-        -- sets the fallback highlight groups to nvim-cmp's highlight groups
-        -- useful for when your theme doesn't support blink.cmp
-        -- will be removed in a future release, assuming themes add support
-        use_nvim_cmp_as_default = true,
-      },
-      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- adjusts spacing to ensure icons are aligned
-      nerd_font_variant = "normal",
-
       -- use an empty table to disable a keymap
       -- keymap = "default",
       keymap = {
@@ -38,6 +28,54 @@ MEnabled = {
         ["<C-b>"] = { "scroll_documentation_up", "fallback" },
         ["<C-f>"] = { "scroll_documentation_down", "fallback" },
       },
+      fuzzy = {
+        -- When enabled, allows for a number of typos relative to the length of the query
+        -- Disabling this matches the behavior of fzf
+        use_typo_resistance = true,
+        -- Frecency tracks the most recently/frequently used items and boosts the score of the item
+        use_frecency = true,
+        -- Proximity bonus boosts the score of items matching nearby words
+        use_proximity = true,
+        -- UNSAFE!! When enabled, disables the lock and fsync when writing to the frecency database. This should only be used on unsupported platforms (i.e. alpine termux)
+        use_unsafe_no_lock = false,
+        -- Controls which sorts to use and in which order, falling back to the next sort if the first one returns nil
+        -- You may pass a function instead of a string to customize the sorting
+        sorts = { "score", "sort_text" },
+
+        prebuilt_binaries = {
+          -- Whether or not to automatically download a prebuilt binary from github. If this is set to `false`
+          -- you will need to manually build the fuzzy binary dependencies by running `cargo build --release`
+          download = true,
+          -- Ignores mismatched version between the built binary and the current git sha, when building locally
+          ignore_version_mismatch = false,
+          -- When downloading a prebuilt binary, force the downloader to resolve this version. If this is unset
+          -- then the downloader will attempt to infer the version from the checked out git tag (if any).
+          --
+          -- Beware that if the fuzzy matcher changes while tracking main then this may result in blink breaking.
+          force_version = nil,
+          -- When downloading a prebuilt binary, force the downloader to use this system triple. If this is unset
+          -- then the downloader will attempt to infer the system triple from `jit.os` and `jit.arch`.
+          -- Check the latest release for all available system triples
+          --
+          -- Beware that if the fuzzy matcher changes while tracking main then this may result in blink breaking.
+          force_system_triple = nil,
+          -- Extra arguments that will be passed to curl like { 'curl', ..extra_curl_args, ..built_in_args }
+          extra_curl_args = {},
+        },
+      },
+      completion = {
+        list = {
+          selection = {
+            preselect = function(ctx)
+              return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active { direction = 1 }
+            end,
+          },
+        },
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        cmdline = {},
+      },
 
       -- experimental auto-brackets support
       -- accept = { auto_brackets = { enabled = true } }
@@ -46,18 +84,15 @@ MEnabled = {
       -- trigger = { signature_help = { enabled = true } }
     },
   },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = { "saghen/blink.cmp" },
-    config = function(_, opts)
-      local lspconfig = require "lspconfig"
-      for server, config in pairs(opts.servers or {}) do
-        config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-        config.capabilities.textDocument.completion.completionItem.snippetSupport = true
-        lspconfig[server].setup(config)
-      end
-    end,
-  },
+  -- {
+  --   "AstroNvim/astrolsp",
+  --   dependencies = { "saghen/blink.cmp" },
+  --   config = {
+  --     clangd = {
+  --       capabilities = require('blink.cmp').get_lsp_capabilities(require"astrolsp".config.clangd.capabilities)
+  --     },
+  --   },
+  -- },
 }
 
 MDisabled = {
@@ -67,4 +102,4 @@ MDisabled = {
     enabled = false,
   },
 }
-return MDisabled
+return MEnabled

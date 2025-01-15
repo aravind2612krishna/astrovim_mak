@@ -1,7 +1,7 @@
 return {
   -- disable trouble
   -- { "folke/noice.nvim", enabled = false },
-  -- { "rcarriga/nvim-notify", enabled = false },
+  { "rcarriga/nvim-notify", enabled = false },
   -- { "stevearc/conform.nvim", enabled = false },
   -- { "mfussenegger/nvim-lint", enabled = false },
   -- { "folke/flash.nvim", enabled = false },
@@ -26,4 +26,5 @@ return {
   -- { "AlejandroSuero/freeze-code.nvim", enabled = false },
   { "folke/which-key.nvim", optional = true, enabled = false },
   { "windwp/nvim-autopairs", enabled = false},
+  { "kevinhwang91/nvim-ufo", enabled = false},
 }

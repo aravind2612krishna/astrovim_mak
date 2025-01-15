@@ -14,6 +14,7 @@ return {
   },
   {
     "zbirenbaum/copilot.lua",
+    cmd="Copilot",
     opts = {
       panel = {
         enabled = true,

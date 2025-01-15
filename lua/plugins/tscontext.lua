@@ -35,8 +35,8 @@ return {
     config = function(_, opts)
       -- vim.cmd[[hi! link TreesitterContextBottom underlined]]
       require("treesitter-context").setup(opts)
-      vim.cmd[[hi! TreesitterContextBottom gui=underline guisp=Grey]]
-      vim.cmd[[hi! TreesitterContextLineNumberBottom gui=underline guisp=Grey]]
+      vim.cmd[[hi! link TreesitterContextBottom Underlined]]
+      -- vim.cmd[[hi! link TreesitterContextLineNumberBottom Underlined]]
     end,
   },
 }
