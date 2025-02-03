@@ -44,5 +44,13 @@ return {
       mode = "n",
       desc = "Open review",
     },
+    {
+        "glU",
+        function ()
+            require"gitlab".choose_merge_request({ reviewer_username = "aravk_altair" })
+        end,
+        mode = "n",
+        desc = "Choose aravk_altair MRs",
+    },
   },
 }

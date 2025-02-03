@@ -15,6 +15,20 @@ return {
     "ldelossa/litee-calltree.nvim",
     dependencies = "ldelossa/litee.nvim",
     event = "VeryLazy",
+    keys = {
+      {
+        "<leader>ct",
+        function() vim.lsp.buf.incoming_calls() end,
+        mode = "n",
+        desc = "Open calltree",
+      },
+      {
+        "<leader>cx",
+        function() require("litee.calltree").hide_calltree() end,
+        mode = "n",
+        desc = "Open calltree",
+      },
+    },
     opts = {
       on_open = "panel",
       map_resize_keys = false,

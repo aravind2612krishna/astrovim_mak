@@ -6,17 +6,18 @@ return {
     --   scheme = "astrolight",
     -- },
   },
-  -- {
-  --   "wuelnerdotexe/vim-enfocado",
-  --   config = function(_, _)
-  --     vim.o.termguicolors = true
-  --     vim.o.background = "dark"
-  --     vim.cmd.colorscheme "enfocado"
-  --     vim.cmd[[hi! link MiniStatuslineFilename MoreMsg]]
-  --     vim.cmd[[hi! link TabLineSel MoreMsg]]
-  --     vim.cmd[[hi! link TabLine LspInlayHint]]
-  --   end,
-  -- },
+  {
+    "wuelnerdotexe/vim-enfocado",
+    config = function(_, _)
+      vim.o.termguicolors = true
+      vim.o.background = "dark"
+      vim.cmd.colorscheme "enfocado"
+      vim.cmd[[hi! link MiniStatuslineFilename MoreMsg]]
+      vim.cmd[[hi! link TabLineSel MoreMsg]]
+      vim.cmd[[hi! link TabLine LspInlayHint]]
+      vim.cmd[[hi! link TreesitterContextBottom Underlined]]
+    end,
+  },
   -- {
   --   "bluz71/vim-moonfly-colors",
   --   name = "moonfly",
