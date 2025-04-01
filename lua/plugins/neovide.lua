@@ -34,7 +34,8 @@ return {
         neovide_remember_window_size = false,
       },
       opt = {
-        guifont = "EnvyCodeR Nerd Font Mono:h13",
+        -- guifont = "EnvyCodeR Nerd Font Mono:h13",
+        guifont = "Pragmasevka Nerd Font:h12",
       },
     },
     commands = {

@@ -18,15 +18,36 @@ MEnabled = {
       -- use an empty table to disable a keymap
       -- keymap = "default",
       keymap = {
+        preset = "default",
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
-        ["<C-e>"] = { "hide" },
-        ["<CR>"] = { "accept", "fallback" },
+        ["<C-e>"] = { "hide", "fallback" },
+        ["<CR>"] = {
+          function(cmp)
+            if cmp.get_selected_item_idx then return cmp.accept() end
+          end,
+          "fallback",
+        },
 
-        ["<S-Tab>"] = { "select_prev", "snippet_forward", "fallback" },
-        ["<Tab>"] = { "select_next", "snippet_backward", "fallback" },
-
-        ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-        ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+        ["<Tab>"] = {
+          function(cmp)
+            if (not cmp.is_visible()) and cmp.snippet_active() then
+              return cmp.snippet_forward()
+            else
+              if cmp.is_visible() then return cmp.select_next() end
+            end
+          end,
+          "fallback",
+        },
+        ["<S-Tab>"] = {
+          function(cmp)
+            if (not cmp.is_visible()) and cmp.snippet_active() then
+              return cmp.snippet_backward()
+            else
+              if cmp.is_visible() then return cmp.select_prev() end
+            end
+          end,
+          "fallback",
+        },
       },
       fuzzy = {
         -- When enabled, allows for a number of typos relative to the length of the query
@@ -66,15 +87,29 @@ MEnabled = {
       completion = {
         list = {
           selection = {
-            preselect = function(ctx)
-              return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active { direction = 1 }
-            end,
+            preselect = true,
+            -- preselect = function(ctx)
+            --   return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active { direction = 1 }
+            -- end,
           },
+        },
+        ghost_text = {
+          enabled = true,
+          -- Show the ghost text when an item has been selected
+          show_with_selection = true,
+          -- Show the ghost text when no item has been selected, defaulting to the first item
+          show_without_selection = false,
+          -- Show the ghost text when the menu is open
+          show_with_menu = true,
+          -- Show the ghost text when the menu is closed
+          show_without_menu = true,
         },
       },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
-        cmdline = {},
+      },
+      signature = {
+        enabled = true,
       },
 
       -- experimental auto-brackets support

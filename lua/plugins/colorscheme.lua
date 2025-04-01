@@ -6,6 +6,14 @@ return {
     --   scheme = "astrolight",
     -- },
   },
+  -- {
+  --   "alexxGmZ/e-ink.nvim",
+  --   priority = 1000,
+  --   config = function()
+  --     require("e-ink").setup()
+  --     vim.cmd.colorscheme "e-ink"
+  --   end,
+  -- },
   {
     "wuelnerdotexe/vim-enfocado",
     config = function(_, _)
@@ -108,9 +116,21 @@ return {
   --   },
   --   config = function(_, opts)
   --     vim.o.termguicolors = true
-  --     vim.o.background = "dark"
+  --     vim.o.background = "light"
   --     require("solarized").setup(opts)
   --     vim.cmd.colorscheme "solarized"
+  --   end,
+  -- },
+  -- {
+  --   "sainnhe/everforest",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     -- Optionally configure and load the colorscheme
+  --     -- directly inside the plugin declaration.
+  --     vim.g.everforest_enable_italic = true
+  --     vim.o.background = "light"
+  --     vim.cmd.colorscheme "everforest"
   --   end,
   -- },
 }
