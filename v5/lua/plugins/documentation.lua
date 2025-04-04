@@ -8,7 +8,7 @@ return {
 -- return {
 --   "kkoomen/vim-doge",
 --   keys = {
---     "<leader>dg",
+--     "<Leader>dg",
 --     "<Plug>(doge-generate)",
 --     desc = "Generate documentation",
 --   },

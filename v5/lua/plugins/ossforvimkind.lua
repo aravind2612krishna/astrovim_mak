@@ -2,9 +2,9 @@ return {
   "jbyuki/one-small-step-for-vimkind",
 	-- stylua: ignore
 	keys = {
-		{ "<leader>daL", function() require("osv").launch({ port = 8086 }) end, desc = "Adapter Lua Server" },
-		{ "<leader>dal", function() require("osv").run_this() end,              desc = "Adapter Lua" },
-		{ "<leader>das", function() require("osv").stop() end,              desc = "Adapter Lua" },
+		{ "<Leader>daL", function() require("osv").launch({ port = 8086 }) end, desc = "Adapter Lua Server" },
+		{ "<Leader>dal", function() require("osv").run_this() end,              desc = "Adapter Lua" },
+		{ "<Leader>das", function() require("osv").stop() end,              desc = "Adapter Lua" },
 	},
   dependencies = { "mfussenegger/nvim-dap" },
   config = function()

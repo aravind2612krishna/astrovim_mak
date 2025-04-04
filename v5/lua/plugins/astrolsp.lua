@@ -152,7 +152,7 @@ return {
         config = function(_, opts)
             local navbuddy = require("nvim-navbuddy")
             navbuddy.setup(opts)
-            vim.keymap.set('n', '<leader>nb', '<cmd>Navbuddy<CR>', { noremap = true, silent = true })
+            vim.keymap.set('n', '<Leader>nb', '<cmd>Navbuddy<CR>', { noremap = true, silent = true })
         end,
       },
     },

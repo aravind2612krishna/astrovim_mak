@@ -17,13 +17,13 @@ return {
     event = "VeryLazy",
     keys = {
       {
-        "<leader>ct",
+        "<Leader>ct",
         function() vim.lsp.buf.incoming_calls() end,
         mode = "n",
         desc = "Open calltree",
       },
       {
-        "<leader>cx",
+        "<Leader>cx",
         function() require("litee.calltree").hide_calltree() end,
         mode = "n",
         desc = "Open calltree",

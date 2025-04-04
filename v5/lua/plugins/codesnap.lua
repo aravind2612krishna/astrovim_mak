@@ -3,7 +3,7 @@ return {
   -- build = "make build_generator",
   build = "make",
   keys = {
-    { "<leader>cc", "<cmd>CodeSnapASCII<cr>", mode = "x", desc = "cop selected code ASCII" },
+    { "<Leader>cc", "<cmd>CodeSnapASCII<cr>", mode = "x", desc = "cop selected code ASCII" },
   },
   opts = {
     save_path = "~/Pictures",

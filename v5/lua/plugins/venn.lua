@@ -2,7 +2,7 @@ return {
   "jbyuki/venn.nvim",
   keys = {
     {
-      "<leader>vv",
+      "<Leader>vv",
       function()
         local venn_enabled = vim.inspect(vim.b.venn_enabled)
         if venn_enabled == "nil" then

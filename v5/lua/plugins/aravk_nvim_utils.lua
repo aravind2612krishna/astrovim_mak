@@ -3,7 +3,7 @@ return {
   -- dir = "/home/aravk/sources/aravk_nvim_utils",
   keys = {
     {
-      "<leader>td",
+      "<Leader>td",
       function()
         local termdebug = require "aravk_nvim_utils.termdebug"
         if termdebug then termdebug.setupdbg() end

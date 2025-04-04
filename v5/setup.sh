@@ -1,2 +1,2 @@
-mkdir -p ~/.config/astronvim_v5
-rsync --delete --archive --exclude .git ./ ~/.config/astronvim_v5
+mkdir -p ~/.config/nvim
+rsync --delete --archive --exclude .git ./ ~/.config/nvim
