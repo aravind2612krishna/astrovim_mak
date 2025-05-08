@@ -108,9 +108,9 @@ MEnabled = {
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
       },
-      signature = {
-        enabled = true,
-      },
+      -- signature = {
+      --   enabled = true,
+      -- },
 
       -- experimental auto-brackets support
       -- accept = { auto_brackets = { enabled = true } }
