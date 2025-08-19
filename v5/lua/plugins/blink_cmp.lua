@@ -5,7 +5,7 @@ MEnabled = {
     event = "InsertEnter",
     lazy = false, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
-    -- dependencies = "rafamadriz/friendly-snippets",
+    dependencies = "rafamadriz/friendly-snippets",
 
     -- use a release tag to download pre-built binaries
     version = "v1.*",
@@ -50,10 +50,10 @@ MEnabled = {
         },
       },
       fuzzy = {
-        sorts = { "score", "exact", "sort_text" },
-        use_frecency = false,
+        sorts = { "score", "sort_text", "exact" },
+        use_frecency = true,
         use_proximity = true,
-        implementation = "lua",
+        implementation = "rust",
       },
       completion = {
         list = {
@@ -77,18 +77,20 @@ MEnabled = {
         },
       },
       cmdline = {
+        enabled = false,
         keymap = { preset = "inherit" },
         completion = {
           menu = { auto_show = true },
           list = {
             selection = {
               preselect = false,
+              auto_insert = true,
             },
           },
         },
       },
       sources = {
-        default = { "lsp", "path", "buffer" },
+        default = { "lsp", "buffer", "path", "snippets" },
         providers = {
           lsp = {
             min_keyword_length = 0,

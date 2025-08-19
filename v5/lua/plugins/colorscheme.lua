@@ -6,33 +6,17 @@ return {
     --   scheme = "astrolight",
     -- },
   },
-  -- {
-  --   "alexxGmZ/e-ink.nvim",
-  --   priority = 1000,
-  --   config = function()
-  --     require("e-ink").setup()
-  --     vim.cmd.colorscheme "e-ink"
-  --   end,
-  -- },
-  -- {
-  --   "rebelot/kanagawa.nvim",
-  --   config = function(_, _)
-  --     require("kanagawa").setup()
-  --     require("kanagawa").load "wave"
-  --     vim.o.background = "light"
-  --   end,
-  -- },
   {
     "wuelnerdotexe/vim-enfocado",
     config = function(_, _)
       vim.o.termguicolors = true
       vim.o.background = "dark"
-      -- vim.cmd.colorscheme "enfocado"
-      -- vim.cmd [[hi! link MiniStatuslineFilename MoreMsg]]
-      -- vim.cmd [[hi! link TabLineSel MoreMsg]]
-      -- vim.cmd [[hi! link TabLine LspInlayHint]]
-      -- vim.cmd [[hi! link TreesitterContextBottom Underlined]]
-      -- vim.cmd [[hi! link VertSplit AccentSecond]]
+      vim.cmd.colorscheme "default"
+      vim.cmd [[hi! link MiniStatuslineFilename MoreMsg]]
+      vim.cmd [[hi! link TabLineSel MoreMsg]]
+      vim.cmd [[hi! link TabLine LspInlayHint]]
+      vim.cmd [[hi! link TreesitterContextBottom Underlined]]
+      vim.cmd [[hi! link VertSplit AccentSecond]]
 
       vim.api.nvim_create_user_command("DefaultDark", function()
         vim.o.background = "dark"
@@ -194,123 +178,4 @@ return {
       end, {})
     end,
   },
-  -- {
-  --   "bluz71/vim-moonfly-colors",
-  --   name = "moonfly",
-  --   lazy = false,
-  --   priority = 1000,
-  -- },
-  {
-    "zenbones-theme/zenbones.nvim",
-    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
-    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
-    -- In Vim, compat mode is turned on as Lush only works in Neovim.
-    dependencies = "rktjmp/lush.nvim",
-    lazy = false,
-    priority = 1000,
-    -- you can set set configuration options here
-    config = function()
-      -- vim.g.zenbones_darken_comments = 45
-      -- vim.cmd.colorscheme('zenbones')
-      -- vim.cmd.colorscheme "kanagawabones"
-    end,
-  },
-  {
-    "kuznetsss/meadow.nvim",
-    priority = 1000,
-    config = function()
-      require("meadow").setup {
-        color_saturation = 80, -- contrast (0-100)
-        color_value = 80, -- brightness (0-100)
-      }
-      vim.cmd.colorscheme 'meadow'
-    end,
-  },
-  -- {
-  --   "maxmx03/solarized.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   opts = {
-  --     transparent = {
-  --       enabled = true,
-  --       pmenu = true,
-  --       normal = false,
-  --       normalfloat = true,
-  --       neotree = false,
-  --       nvimtree = false,
-  --       whichkey = false,
-  --       telescope = false,
-  --       lazy = false,
-  --     },
-  --     on_highlights = nil,
-  --     on_colors = nil,
-  --     palette = "solarized", -- solarized (default) | selenized
-  --     variant = "autumn", -- "spring" | "summer" | "autumn" | "winter" (default)
-  --     error_lens = {
-  --       text = false,
-  --       symbol = false,
-  --     },
-  --     styles = {
-  --       enabled = true,
-  --       types = {},
-  --       functions = {bold = true},
-  --       parameters = {},
-  --       comments = {italic = true},
-  --       strings = {},
-  --       keywords = {},
-  --       variables = {},
-  --       constants = {},
-  --     },
-  --     plugins = {
-  --       treesitter = true,
-  --       lspconfig = true,
-  --       navic = true,
-  --       cmp = true,
-  --       indentblankline = true,
-  --       neotree = true,
-  --       nvimtree = true,
-  --       whichkey = true,
-  --       dashboard = true,
-  --       gitsigns = true,
-  --       telescope = true,
-  --       noice = true,
-  --       hop = true,
-  --       ministatusline = true,
-  --       minitabline = true,
-  --       ministarter = true,
-  --       minicursorword = true,
-  --       notify = true,
-  --       rainbowdelimiters = true,
-  --       bufferline = true,
-  --       lazy = true,
-  --       rendermarkdown = true,
-  --       ale = true,
-  --       coc = true,
-  --       leap = true,
-  --       alpha = true,
-  --       yanky = true,
-  --       gitgutter = true,
-  --       mason = true,
-  --       flash = true,
-  --     },
-  --   },
-  --   config = function(_, opts)
-  --     vim.o.termguicolors = true
-  --     vim.o.background = "light"
-  --     require("solarized").setup(opts)
-  --     vim.cmd.colorscheme "solarized"
-  --   end,
-  -- },
-  -- {
-  --   "sainnhe/everforest",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     -- Optionally configure and load the colorscheme
-  --     -- directly inside the plugin declaration.
-  --     vim.g.everforest_enable_italic = true
-  --     vim.o.background = "light"
-  --     vim.cmd.colorscheme "everforest"
-  --   end,
-  -- },
 }
